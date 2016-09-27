@@ -6,6 +6,7 @@
     "linebreak-style": ["error", "unix"],
     "react/prop-types": ["error", {"ignore": ["children", "route"]}],
     "new-cap": [0],
+    "no-console": [0],
     "arrow-body-style": [0],
   },
   "env" :{
