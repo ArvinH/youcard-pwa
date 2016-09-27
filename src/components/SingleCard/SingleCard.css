@@ -1,0 +1,8 @@
+.CardWrapper {
+  min-width: 20%;
+  width: 159px;
+  height: 340px;
+  display: block;
+  float: left;
+  margin: 10px;
+}

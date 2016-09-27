@@ -31,10 +31,13 @@ export const getCardList = () => {
   return (dispatch) => {
     dispatch({ type: GET_YOUCARDLIST_INITIATE });
     dispatch(showSpinner());
-    fetch('https://tw.yql.news.yahoo.com/v1/abunews/cardstack_search_advance')
+    fetch('http://localhost:4000/youcard/cardstack_search')
       .then(response => response.json())
       .then((json) => {
-        dispatch({ type: GET_YOUCARDLIST_SUCCESS, payload: { data: json.cardstacks.result } });
+        dispatch({
+          type: GET_YOUCARDLIST_SUCCESS,
+          payload: { data: json.cardstacks.result[0].card_stacks },
+        });
         dispatch(hideSpinner());
       })
       .catch(() => dispatch({ type: GET_YOUCARDLIST_FAIL }));

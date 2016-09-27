@@ -12,18 +12,17 @@ class HomePage extends Component {
 
   render() {
     const {
-      cardList,
+      data,
     } = this.props;
-
-    cardList.map((cards, index) => {
+    const CardList = data.getIn(['youcardList', 'cardList']).map((cards, index) => {
       return (
         <SingleCard key={index} data={cards} />
       );
     });
 
     return (
-      <div className="Ta(c) M(20px)">
-        {cardList}
+      <div className="Ta(c)">
+        {CardList}
       </div>
     );
   }
@@ -31,7 +30,7 @@ class HomePage extends Component {
 
 HomePage.propTypes = {
   getCardList: React.PropTypes.func,
-  cardList: React.PropTypes.arrayOf(React.PropTypes.object),
+  data: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 export default HomePage;

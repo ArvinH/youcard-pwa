@@ -21,7 +21,23 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    //new OfflinePlugin({ excludes: ['images/*.png'] }),
+    new OfflinePlugin({
+      ServiceWorker: {
+        entry: path.join(__dirname, 'sw-handler.js'),
+        events: true,
+      },
+
+      excludes: ['images/*.png'],
+
+      caches: 'all',
+      updateStrategy: 'all',
+
+      // Removes warning for about `additional` section usage
+      safeToUseOptionalCaches: true,
+      relativePaths: false,
+      navigateFallbackURL: '/',
+      publicPath: '/',
+    }),
   ],
   module: {
     preLoaders: [

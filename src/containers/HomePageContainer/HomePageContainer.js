@@ -8,7 +8,7 @@ import {
 
 export default connect(
   state => ({
-    cardList: state,
+    data: state,
   }),
   dispatch => ({
     onEnterCardStack: cardstackId => (
