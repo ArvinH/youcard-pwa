@@ -10,8 +10,8 @@ export default connect(
     data: state,
   }),
   dispatch => ({
-    setSnackBar: condition => (
-      dispatch(setSnackBar(condition))
+    setSnackBar: (condition, msg) => (
+      dispatch(setSnackBar(condition, msg))
     ),
   })
 )(Main);

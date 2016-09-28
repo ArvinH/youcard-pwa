@@ -13,8 +13,8 @@ class Main extends Component {
   }
 
   updateOnlineStatus() {
-    const condition = navigator.onLine ? 'online' : 'offline';
-    this.props.setSnackBar(condition);
+    const msg = (!navigator.onLine) ? 'Oops! You are offline' : 'Hoya! You are online';
+    this.props.setSnackBar(navigator.onLine, msg);
   }
 
   render() {
@@ -32,7 +32,7 @@ class Main extends Component {
         </div>
         <Snackbar
           open={data.getIn(['ui', 'snackbar'])}
-          message="Oops! You are offline"
+          message={data.getIn(['ui', 'snackbarMsg'])}
           autoHideDuration={4000}
           onRequestClose={this.handleRequestClose}
         />

@@ -38,7 +38,7 @@ module.exports = {
         },
         {
           handler: 'cacheFirst',
-          urlPattern: /[.]jpg$/,
+          urlPattern: /[.]jpg|[.]png|[.]jpeg$/,
         }],
       }
     ),

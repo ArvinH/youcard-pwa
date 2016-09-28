@@ -26,6 +26,12 @@ const uiReducers = handleActions({
       false
     )
   ),
+  SET_SNACKBARMSG: (state, { payload }) => (
+    state.set(
+      'snackbarMsg',
+      payload.data
+    )
+  ),
 }, UiState);
 
 export default uiReducers;
