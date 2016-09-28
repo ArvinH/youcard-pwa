@@ -25,16 +25,9 @@ module.exports = {
       },
       sourceMap: false,
     }),
-    // new webpack.DefinePlugin({
-    //   'process.env.NODE_ENV': 'production',
-    // }),
-    // new OfflinePlugin({
-    //   ServiceWorker: {
-    //     entry: './sw-handler.js',
-    //     events: true,
-    //   },
-    //   excludes: ['images/*.png'],
-    // }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     new SWPrecacheWebpackPlugin(
       {
         cacheId: 'youcard-pwa',
