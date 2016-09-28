@@ -14,9 +14,7 @@ const SingleCard = props => (
       <Card>
         <CardHeader
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            'justify-content': 'space-between',
+            lineHeight: 1,
           }}
           title={props.data.getIn(['user', 'nickname'])}
           avatar={props.data.getIn(['user', 'icon'])}
