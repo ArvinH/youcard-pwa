@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = {
   entry: './src/index',
@@ -25,10 +26,30 @@ module.exports = {
       },
       sourceMap: false,
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': 'production',
-    }),
-    new OfflinePlugin({ excludes: ['images/*.png'] }),
+    // new webpack.DefinePlugin({
+    //   'process.env.NODE_ENV': 'production',
+    // }),
+    // new OfflinePlugin({
+    //   ServiceWorker: {
+    //     entry: './sw-handler.js',
+    //     events: true,
+    //   },
+    //   excludes: ['images/*.png'],
+    // }),
+    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: 'youcard-pwa',
+        filename: 'youcard-service-worker.js',
+        runtimeCaching: [{
+          handler: 'cacheFirst',
+          urlPattern: /cardstack_search$/,
+        },
+        {
+          handler: 'cacheFirst',
+          urlPattern: /[.]jpg$/,
+        }],
+      }
+    ),
   ],
   module: {
     loaders: [{

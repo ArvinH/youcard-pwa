@@ -13,6 +13,14 @@ import store from './store';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
+// require('offline-plugin/runtime').install();
+
+(() => {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/youcard-service-worker.js');
+  }
+})();
+
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider>

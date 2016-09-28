@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
 
 module.exports = {
   devtool: 'eval',
@@ -20,23 +19,6 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
-    }),
-    new OfflinePlugin({
-      ServiceWorker: {
-        entry: path.join(__dirname, 'sw-handler.js'),
-        events: true,
-      },
-
-      excludes: ['images/*.png'],
-
-      caches: 'all',
-      updateStrategy: 'all',
-
-      // Removes warning for about `additional` section usage
-      safeToUseOptionalCaches: true,
-      relativePaths: false,
-      navigateFallbackURL: '/',
-      publicPath: '/',
     }),
   ],
   module: {
