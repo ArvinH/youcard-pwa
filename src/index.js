@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { hashHistory, Router, Route, IndexRoute } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Main from './components/Main';
 import HomePageContainer from './containers/HomePageContainer';
 import ResultPageContainer from './containers/ResultPageContainer';
@@ -14,16 +16,20 @@ import store from './store';
 injectTapEventPlugin();
 
 // require('offline-plugin/runtime').install();
+let mainTheme = null;
 
 (() => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/youcard-service-worker.js');
   }
+  if (!navigator.onLine) {
+    mainTheme = darkBaseTheme;
+  }
 })();
 
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider>
+    <MuiThemeProvider muiTheme={getMuiTheme(mainTheme)}>
       <Router history={hashHistory}>
         <Route path="/" component={Main}>
           <IndexRoute component={HomePageContainer} />

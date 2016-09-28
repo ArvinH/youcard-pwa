@@ -16,6 +16,7 @@ const SingleCard = props => (
           style={{
             display: 'flex',
             alignItems: 'center',
+            'justify-content': 'space-between',
           }}
           title={props.data.getIn(['user', 'nickname'])}
           avatar={props.data.getIn(['user', 'icon'])}
