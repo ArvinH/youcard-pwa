@@ -31,7 +31,7 @@ export const getCardList = () => {
   return (dispatch) => {
     dispatch({ type: GET_YOUCARDLIST_INITIATE });
     dispatch(showSpinner());
-    fetch('http://localhost:4000/youcard/cardstack_search')
+    fetch('https://arvinh.herokuapp.com/youcard/cardstack_search')
       .then(response => response.json())
       .then((json) => {
         dispatch({
