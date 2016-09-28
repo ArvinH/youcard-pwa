@@ -20,7 +20,7 @@ let mainTheme = null;
 
 (() => {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/youcard-service-worker.js');
+    navigator.serviceWorker.register('./youcard-service-worker.js');
   }
   if (!navigator.onLine) {
     mainTheme = darkBaseTheme;
