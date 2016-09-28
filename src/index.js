@@ -6,7 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import Main from './components/Main';
+import MainContainer from './containers/MainContainer';
 import HomePageContainer from './containers/HomePageContainer';
 import ResultPageContainer from './containers/ResultPageContainer';
 import store from './store';
@@ -31,7 +31,7 @@ ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider muiTheme={getMuiTheme(mainTheme)}>
       <Router history={hashHistory}>
-        <Route path="/" component={Main}>
+        <Route path="/" component={MainContainer}>
           <IndexRoute component={HomePageContainer} />
           <Route path="/result" component={ResultPageContainer} />
         </Route>

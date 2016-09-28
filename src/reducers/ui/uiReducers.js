@@ -14,6 +14,18 @@ const uiReducers = handleActions({
       false
     )
   ),
+  SHOW_SNACKBAR: state => (
+    state.set(
+      'snackbar',
+      true
+    )
+  ),
+  HIDE_SNACKBAR: state => (
+    state.set(
+      'snackbar',
+      false
+    )
+  ),
 }, UiState);
 
 export default uiReducers;
